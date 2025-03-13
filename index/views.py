@@ -11,5 +11,18 @@ def home_page(request):
     }
     return render(request, "home.html",context)
 
+def category_page(request, pk):
+    news = News.objects.all().order_by('-created_at')
+    categories = NewsCategory.objects.get(id=pk)
+    context = {
+        'news': news,
+        'categories': categories,
+    }
+    return render(request, 'politics.html', context)
 
-
+def news_page(request, pk):
+    news = News.objects.all().order_by('-created_at')
+    context = {
+        'news': news
+    }
+    return render(request, 'politics.html', context)

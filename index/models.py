@@ -18,9 +18,14 @@ class News(models.Model):
     category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE, verbose_name='Категория')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
+
+
+
+
+
     def __str__(self):
         return str(self.title)
 
-class Meta:
-    verbose_name = 'Новость'
-    verbose_name_plural = 'Новости'
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
