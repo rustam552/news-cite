@@ -17,11 +17,7 @@ class News(models.Model):
     content = models.TextField(verbose_name='Основной текст')
     category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE, verbose_name='Категория')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
-
-
-
-
-
+    news_photo = models.ImageField(upload_to='news_photos/', null=True, blank=True, verbose_name='Фото новости')
 
     def __str__(self):
         return str(self.title)

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Main News Page</title>
+    <title>Новости категории {{ category.name }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -25,21 +25,16 @@
         </header>
         <hr>
 
-        <!-- Добавляем форму поиска -->
+        <!-- Форма поиска -->
         <form method="post" action="/search" class="d-flex mb-4">
             {% csrf_token %}
             <input type="text" name="query" class="form-control me-2" placeholder="Поиск новостей..." aria-label="Search">
             <button class="btn btn-outline-primary" type="submit">Найти</button>
         </form>
-
-        <!-- Отображение поискового запроса -->
-        {% if query %}
-            <p class="text-muted">Результаты поиска для: <strong>{{ query }}</strong></p>
-        {% endif %}
     </div>
 
     <div class="container px-4 py-5" id="hanging-icons">
-        <h2 class="pb-2 border-bottom">Все новости</h2>
+        <h2 class="pb-2 border-bottom">Новости в категории {{ category.name }}</h2>
         <div class="row g-4 py-5">
             {% for p in news %}
             <div class="col-12 col-md-4">
@@ -59,7 +54,7 @@
             </div>
             {% empty %}
             <div class="col-12">
-                <p>Новостей пока нет.</p>
+                <p>Новостей в этой категории пока нет.</p>
             </div>
             {% endfor %}
         </div>
